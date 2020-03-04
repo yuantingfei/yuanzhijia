@@ -1,0 +1,222 @@
+ //覆盖一些element-ui样式
+.block-checkbox {
+  display: block;
+}
+
+.operation-container {
+  .cell {
+    padding: 10px !important;
+  }
+  .el-button {
+    &:nth-child(3) {
+      margin-top: 10px;
+      margin-left: 0px;
+    }
+    &:nth-child(4) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 8px;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+    .el-tag {
+      margin-right: 0px;
+    }
+  }
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+//文章页textarea修改样式
+.article-textarea {
+  textarea {
+    padding-right: 40px;
+    resize: none;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #bfcbd9;
+  }
+}
+
+//element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+.el-cascader-menus{ 
+  /deep/ ul.el-cascader-menu{
+      width: 200px!important;
+      min-width: 200px;
+    }
+}
+
+.el-select-dropdown{
+  .el-date-editor.el-input {
+    width: 178px;
+  }
+}
+
+// 下拉框样式调整
+.sureassetadd .el-cascader-menu{
+  width: 280px!important;
+  min-width:280px !important;
+}
+.sureassetinputselectdown{
+  width: 280px!important;
+  min-width:280px !important;
+}
+
+// element 下拉框样式调整
+.orgPopoverdialog.repeatStyleadd,.orgPopover.repeatStyleadd,.orgPopoverdialogone.repeatStyleadd{
+  padding:0px;
+  border:none;
+  .el-tree{
+    height: 400px;
+    overflow-y: auto;
+  }
+  .el-tree-node__expand-icon{
+    border-left-color:#bfcbd9;
+  //  background-color:#e4e8f1;
+  }
+  .el-tree-node__content:hover {
+    background-color: #e4e8f1;
+  }
+  .el-tree-node.is-expanded.is-current{
+    .el-tree-node__content:hover {
+      background-color: #449dbf;
+      color: #fff;
+    }
+  }
+  .el-tree-node__content:hover{
+    color:#646464;
+  }
+  .el-tree-node__content{
+    border-bottom:none
+  }
+  .el-tree-node.is-expanded.is-current{
+    background-color: #449dbf;
+    color: #fff;
+  }
+  .el-tree>.el-tree-node.is-expanded.is-current{
+    background: #d9d9d9;
+    color: #646464;
+    .el-tree-node__children{
+      background-color: #fff;
+      color: #646464;
+      .el-tree-node.is-expanded{
+        background-color: transparent;
+      }
+    }   
+  }
+}
+.orgPopover.sureaseet{
+  width: 280px !important;
+}
+.el-select-dropdown.alarmDetail_srcIP{
+  /deep/.el-scrollbar__wrap{
+    max-height: 208px;
+  }
+}
+.el-popover.popover_tree_class{
+  // left: 1089px !important;
+  margin-top:4px;
+  min-width: 200px;
+  width: auto !important;
+  .popper__arrow{
+    display: none;
+  }
+  .el-tree{
+    max-height: 300px;
+    overflow-x: hidden;
+  }
+  .el-tree-node{
+    .el-tree-node__expand-icon{
+      border-left-color: #1692c1;
+      &.is-leaf{
+        border-color: transparent;
+      }
+    }
+  }
+  .el-checkbox__input.is-indeterminate{
+    .el-checkbox__inner{
+      background-color: #1692c1;
+      border-color: #1692c1;
+    }
+  }
+}
+.el-select-dropdown.popover_option_class{
+  display: none;
+}
+// .el-table--border::after, .el-table--group::after, .el-table::before{
+//   background-color: #B4B4B4;
+// }
+@import './declare.scss';
+.el-table td{
+  height: $table_thtr_height;
+  font-size: $table_thtr_font_size;
+}
+.el-table th{
+  height: $table_thtr_height;
+  font-size: $table_thtr_font_size;
+  color:$table_header_color;
+}
+.el-table {
+  color: #585a60;
+}
+// 标题头的颜色
+.el-table--border th{
+  // background-color: #b2d1db;
+  background-color: $table_header_bg_color;
+}
+// 鼠标hover上去的颜色
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color:$table_tr_hover_bg_color;
+}
+//隔行换色的颜色
+.el-table tr:nth-child(2n){
+  background-color:$table_2n_child_bg_color;
+}
+.el-table__body, .el-table__footer, .el-table__header{
+  border: 0;
+}
+// .el-table--border::after, .el-table--group::after, .el-table::before{
+//   background-color:transparent;
+// }

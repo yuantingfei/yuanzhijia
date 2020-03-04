@@ -1,0 +1,160 @@
+@import './var.scss';
+@mixin colorBtn($color) {
+  background: $color;
+  &:hover,
+  &:active {
+    color: $color;
+    &:before,
+    &:after {
+      background: $color;
+    }
+  }
+}
+
+.blue-btn {
+  @include colorBtn($blue)
+}
+
+.light-blue-btn {
+  color: #616161;
+  @include colorBtn($grey)
+}
+
+.red-btn {
+  @include colorBtn($red)
+}
+
+.pink-btn {
+  @include colorBtn($pink)
+}
+
+.green-btn {
+  @include colorBtn($green)
+}
+
+.tiffany-btn {
+  @include colorBtn($tiffany)
+}
+
+.yellow-btn {
+  @include colorBtn($yellow)
+}
+
+// .pan-btn {
+//   font-size: 14px;
+//   color: #fff;
+//   // padding: 14px 36px;
+//   // border-radius: 8px;
+//   border: none;
+//   outline: none;
+//   // margin-right: 25px;
+//   transition: 600ms ease all;
+//   position: relative;
+//   display: inline-block;
+//   &:hover {
+//     background: #fff;
+//     &:before, &:after {
+//       width: 100%;
+//       transition: 600ms ease all;
+//     }
+//   }
+//   &:before, &:after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 2px;
+//     width: 0;
+//     transition: 400ms ease all;
+//   }
+//   &::after {
+//     right: inherit;
+//     top: inherit;
+//     left: 0;
+//     bottom: 0;
+//   }
+// }
+// a.pan-btn{
+//   padding: 14px 36px;
+//   border-radius: 8px;
+//   margin-right: 25px;
+// }
+.custom-button {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #fff;
+  color: #fff;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.tree-btn {
+  // width: 18px;
+  // height: 18px;
+  margin-right: 3px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #26bc9f;
+  font-size: 16px;
+  line-height: 15px; // text-align: center;
+  opacity: 0;
+  &:focus {
+    outline: none
+  }
+}
+
+.el-tree-node__content:hover {
+  background-color: #fff;
+  color: #1692c1;
+  .tree-btn {
+    opacity: 1;
+  }
+}
+
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content:hover {
+  .tree-btn {
+    color: #fff;
+    border-color: #fff;
+  }
+}
+.el-button{
+  padding: 6px 14px;
+}
+.red_btn{
+  color: #fff;
+  // border-radius: 14px;
+  background: -webkit-linear-gradient(left, #fa584f , #fc6c2e); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #fa584f, #fc6c2e); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #fa584f, #fc6c2e); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #fa584f , #fc6c2e); /* 标准的语法 */
+  &:hover,&:focus{
+    color: #fff;
+    background: -webkit-linear-gradient(left, red , #fc6c2e); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, red, #fc6c2e); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, red, #fc6c2e); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, red , #fc6c2e); /* 标准的语法 */
+  }
+}
+.blue_btn{
+  color: #fff;
+  // border-radius: 14px;
+  background: -webkit-linear-gradient(left, #2f86ff , #2ab5fd); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #2f86ff, #2ab5fd); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #2f86ff, #2ab5fd); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #2f86ff , #2ab5fd); /* 标准的语法 */
+  &:hover,&:focus{
+    color: #fff;
+    background: -webkit-linear-gradient(left, blue , #2ab5fd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, blue, #2ab5fd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, blue, #2ab5fd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, blue , #2ab5fd); /* 标准的语法 */
+  }
+}
