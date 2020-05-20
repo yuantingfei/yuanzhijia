@@ -10,11 +10,11 @@
       <el-button type="white-btn" @click="onReset()">清空</el-button>
     </div>
     <div class="box_table">
-      <div class="table_top_btn_greoup">
+      <!-- <div class="table_top_btn_greoup">
         <div class="group">
           <setcol style="float:right" :title="table.columns"></setcol>
         </div>
-      </div>
+      </div> -->
        <div class="table_comtent">
        <table-data :config="param" :listLoading="listLoading" :tableData="tableData"  @selection-change="handleSelectionChange" @refresh-table="getTableData" :hideIndex="true" type="index">
           <el-table-column type="selection" width="40"></el-table-column>
@@ -22,6 +22,8 @@
             <template slot-scope="scope">
               <div v-if="col.col=='idxu'">{{ scope.$index + 1 }}</div>
               <div v-else-if="col.col=='opt'" class="opt">
+                <el-button round size="mini" :title="'上移'" icon="el-icon-upload2"  @click="up(scope.row)"></el-button>
+                <el-button round size="mini" :title="'下移'" icon="el-icon-download"  @click="down(scope.row)"></el-button>
               </div>
                <div v-else class="overdata" :title="scope.row[col.col]">{{ scope.row[col.col] }}</div> 
             </template>
@@ -66,6 +68,7 @@ export default {
           { col: "ztjz", name: "昨天净值", width: "10%", sort: false, show: true },
           { col: "ztzf", name: "昨天涨幅(比上个交易日)", width: "10%", sort: false, show: true },
           { col: "timeStr", name: "更新时间", width: "10%", sort: false, show: true },
+          { col: "opt", name: "操作", width: "10%", sort: false, show: true },
         ],
         pagination: true
       },
@@ -111,6 +114,14 @@ export default {
       if (query) {
         this.listQuery = query;
       }
+      this.getTableData();
+    },
+    up(row){
+      jijinApi.upList({id:row.id})
+      this.getTableData();
+    },
+    down(row){
+      jijinApi.downList({id:row.id})
       this.getTableData();
     },
   },

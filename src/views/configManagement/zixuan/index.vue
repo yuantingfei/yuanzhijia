@@ -12,9 +12,9 @@
     <div class="box_table">
       <div class="table_top_btn_greoup">
         <el-button class="default-btn" @click="create()">新增自选</el-button>
-        <div class="group">
+        <!-- <div class="group">
           <setcol style="float:right" :title="table.columns"></setcol>
-        </div>
+        </div> -->
       </div>
        <div class="table_comtent">
        <table-data :config="param" :listLoading="listLoading" :tableData="tableData"  @selection-change="handleSelectionChange" @refresh-table="getTableData" :hideIndex="true" type="index">
@@ -23,7 +23,7 @@
             <template slot-scope="scope">
               <div v-if="col.col=='idxu'">{{ scope.$index + 1 }}</div>
               <div v-else-if="col.col=='opt'" class="opt">
-                <el-button type="primary" icon="el-icon-delete"  @click="deleteRow(scope.row)"></el-button>
+                <el-button  round size="mini" icon="el-icon-delete"  @click="deleteRow(scope.row)"></el-button>
               </div>
                <div v-else class="overdata" :title="scope.row[col.col]">{{ scope.row[col.col] }}</div> 
             </template>

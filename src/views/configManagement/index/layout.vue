@@ -4,7 +4,7 @@
       <!-- <img class="logo" src="/static/configManagement/配置管理子系统.png"/>  -->
       <div class="box">
         <span class="time">欢迎您！管理员</span>
-        <el-button class="blue-btn" @click="exit()" size="mini">退出</el-button>
+        <!-- <el-button class="blue-btn" @click="exit()" size="mini">退出</el-button> -->
       </div>
     </div>
     <div class="middle">
@@ -134,7 +134,7 @@ body{
     position:absolute;
     height: calc(100% - 55px);
     .left{
-      width: 235px;
+      width: 155px;
       height: calc(100%);
       float: left;
       display: flex;
@@ -145,9 +145,9 @@ body{
       background-position: bottom;
     }
     .right{
-      width: calc(100% - 235px);
+      width: calc(100% - 155px);
       height: calc(100%);
-      margin-left: 235px;
+      margin-left: 155px;
       padding: 20px;
       overflow: auto;
       background-color: #f2f2f2;

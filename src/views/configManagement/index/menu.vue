@@ -117,10 +117,10 @@ export default {
 <style lang="scss" scoped>
 $menu_height:35px;
 .menu{
-  width: 175px;
+  width: 125px;
   margin-top: 10px;
   .menu_box{
-    width: 175px;
+    width: 125px;
     padding: 15px 0px;
     border-bottom: 1px solid #3a445e;
     .menu_item_parent{

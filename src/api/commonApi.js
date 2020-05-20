@@ -53,6 +53,20 @@ const jijinApi = {
       data: params
     });
   },
+  upList(params) {
+    return fetch({
+      url: '/api/v1/upList/',
+      method: 'post',
+      data: params
+    });
+  },
+  downList(params) {
+    return fetch({
+      url: '/api/v1/downList/',
+      method: 'post',
+      data: params
+    });
+  },
 }
 
 export {

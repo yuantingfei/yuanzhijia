@@ -7,14 +7,15 @@ const Err404 = () =>
   import('../views/error/404');
 const AllBack = () =>
   import('../views/error/supplierAllBack');
-export const constantRouterMap = [{
-  path: '/login',
-  component: Login,
-  hidden: true
-},
+export const constantRouterMap = [
+//   {
+//   path: '/login',
+//   component: Login,
+//   hidden: true
+// },
 {
   path: '',
-  redirect: '/login',
+  redirect: '/configManagement/jijin',
 },
 {
   path: '/configManagement',
