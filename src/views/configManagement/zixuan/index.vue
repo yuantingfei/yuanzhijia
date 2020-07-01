@@ -93,7 +93,7 @@ export default {
       },
       pagination: {
         pageIndex: 1,
-        pageRows: 20,
+        pageRows: 1000,
         total: 0,
         pageSizes: [1000]
       },
@@ -125,7 +125,6 @@ export default {
           jijinApi.addCode({code:this.form.code})
         }
       });
-      
     },
     deleteRow(row){
       let zixuan = localStorage.getItem('zixuan').split(",");
