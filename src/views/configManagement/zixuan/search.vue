@@ -2,7 +2,7 @@
   <el-form :inline="true" :model="query" :rules="formRules" label-width="100px"  ref="queryForm" label-position="right">
     <el-row style="padding-top:20px;">
         <el-form-item :label="'关键词'" class="set-input-width">
-          <el-input v-model="query.key"  :placeholder="'关键词'"></el-input>
+          <el-input v-model="key"  :placeholder="'关键词'"></el-input>
         </el-form-item>
     </el-row>
   </el-form>
@@ -23,6 +23,7 @@ export default {
     return {
       dateTimeRange: "",
       dateTime: "24h",
+      key: "",
       formRules: {
       },
     }
@@ -31,9 +32,14 @@ export default {
   },
   computed:{
   },
+  watch:{
+    key(){
+      this.onSubmit()
+    }
+  },
   methods:{
     onSubmit(){
-      this.$emit("getList",Object.assign({}, this.query));
+      this.$emit("getList",{key:this.key});
     },
     onReset() {
       this.clearQuery();

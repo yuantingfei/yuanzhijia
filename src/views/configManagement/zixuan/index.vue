@@ -1,14 +1,14 @@
 <template>
  <div class="main_box">
-    <div class="box_search">
+    <!-- <div class="box_search">
       <div class="bg">
         <search ref="search" :query="listQuery" @getList="getList"></search>
       </div>
-    </div>
-    <div class="box_search_btn">
+    </div> -->
+    <!-- <div class="box_search_btn">
       <el-button class="default-btn" @click="onSubmit()">搜索</el-button>
       <el-button type="white-btn" @click="onReset()">清空</el-button>
-    </div>
+    </div> -->
     <div class="box_table">
       <div class="table_top_btn_greoup">
         <el-button class="default-btn" @click="create()">新增自选</el-button>

@@ -2,13 +2,13 @@
  <div class="main_box">
     <div class="box_search">
       <div class="bg">
-        <search ref="search" :query="listQuery" @getList="getList"></search>
+        <search ref="search" @getList="getList"></search>
       </div>
     </div>
-    <div class="box_search_btn">
+    <!-- <div class="box_search_btn">
       <el-button class="default-btn" @click="onSubmit()">搜索</el-button>
       <el-button type="white-btn" @click="onReset()">清空</el-button>
-    </div>
+    </div> -->
     <div class="box_table">
       <!-- <div class="table_top_btn_greoup">
         <div class="group">
@@ -74,9 +74,9 @@ export default {
       },
       pagination: {
         pageIndex: 1,
-        pageRows: 20,
+        pageRows: 100,
         total: 0,
-        pageSizes: [10, 20, 50, 100]
+        pageSizes: [100, 200, 500, 1000]
       },
       listQuery: {
         key: "",
@@ -99,7 +99,9 @@ export default {
       this.getList();
     },
     getTableData() {
-      let params = Object.assign(this.listQuery, this.getParams());
+      console.log(this.listQuery)
+      let params = Object.assign({},this.listQuery, this.getParams());
+      
       jijinApi
         .getList(params)
         .then(res => {
@@ -111,9 +113,7 @@ export default {
         });
     },
     getList(query) {
-      if (query) {
-        this.listQuery = query;
-      }
+      this.listQuery.key = query.key;
       this.getTableData();
     },
     up(row){

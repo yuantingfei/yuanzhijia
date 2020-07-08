@@ -53,7 +53,8 @@
     "vue-template-compiler": "^2.5.2",
     "vuedraggable": "2.8.4",
     "vuex": "^2.3.1",
-    "xlsx": "^0.10.8"
+    "xlsx": "^0.10.8",
+    "ytfutils": "^1.0.1"
   },
   "devDependencies": {
     "ansi-regex": "^3.0.0",

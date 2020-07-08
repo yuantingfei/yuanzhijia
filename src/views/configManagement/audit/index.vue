@@ -106,9 +106,9 @@ export default {
         });
     },
     getList(query) {
-      if (query) {
-        this.listQuery = query;
-      }
+      // if (query) {
+      //   this.listQuery = query;
+      // }
       this.getTableData();
     },
   },
