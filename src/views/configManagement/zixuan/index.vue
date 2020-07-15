@@ -132,7 +132,6 @@ export default {
         const elementy = zixuan[y];
         if (row.code == elementy) {
           zixuan.splice(y,1);
-          break;
         }
       }
       localStorage.setItem('zixuan',zixuan.join(","));

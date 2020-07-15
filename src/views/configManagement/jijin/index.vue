@@ -24,6 +24,7 @@
               <div v-else-if="col.col=='opt'" class="opt">
                 <el-button round size="mini" :title="'上移'" icon="el-icon-upload2"  @click="up(scope.row)"></el-button>
                 <el-button round size="mini" :title="'下移'" icon="el-icon-download"  @click="down(scope.row)"></el-button>
+                <el-button round size="mini" :title="'加自选'" icon="el-icon-circle-plus-outline"  @click="addzixuan(scope.row)"></el-button>
               </div>
                <div v-else class="overdata" :title="scope.row[col.col]">{{ scope.row[col.col] }}</div> 
             </template>
@@ -98,10 +99,9 @@ export default {
       this.listQuery.key = ""
       this.getList();
     },
+    
     getTableData() {
-      console.log(this.listQuery)
       let params = Object.assign({},this.listQuery, this.getParams());
-      
       jijinApi
         .getList(params)
         .then(res => {
@@ -123,6 +123,20 @@ export default {
     down(row){
       jijinApi.downList({id:row.id})
       this.getTableData();
+    },
+    addzixuan(row){
+      if(localStorage.getItem('zixuan').indexOf(row.code)==-1){
+        localStorage.setItem('zixuan',localStorage.getItem('zixuan')+","+row.code);
+        this.$message({
+          message: '添加自选成功',
+          type: 'success'
+        });
+      }else{
+        this.$message({
+          message: '自选已经存在',
+          type: 'success'
+        });
+      }
     },
   },
   beforeDestroy() {}
