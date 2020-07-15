@@ -1,8 +1,8 @@
 /**
  * Created by on 16/11/18.
  */
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
 
 
 export function parseTime(time, cFormat) {
@@ -296,23 +296,23 @@ export function arrayToTreeArray(orginArray, idStr, pidStr, childrenStr) {
  * @param filename
  * @returns
  */
-export function html2pdf(dom, filename) {
-  html2canvas(dom).then(canvas => {
-    var pageData = canvas.toDataURL("image/jpeg", 1.0);
-    //方向默认竖直，尺寸ponits，格式a4[595.28,841.89]
-    var pdf = new jsPDF("", "pt", "a4");
-    //addImage后两个参数控制添加图片的尺寸，此处将页面高度按照a4纸宽高比列进行压缩
-    pdf.addImage(
-      pageData,
-      "JPEG",
-      0,
-      0,
-      595.28,
-      592.28 / canvas.width * canvas.height
-    );
-    pdf.save(filename + ".pdf");
-  });
-}
+// export function html2pdf(dom, filename) {
+//   html2canvas(dom).then(canvas => {
+//     var pageData = canvas.toDataURL("image/jpeg", 1.0);
+//     //方向默认竖直，尺寸ponits，格式a4[595.28,841.89]
+//     var pdf = new jsPDF("", "pt", "a4");
+//     //addImage后两个参数控制添加图片的尺寸，此处将页面高度按照a4纸宽高比列进行压缩
+//     pdf.addImage(
+//       pageData,
+//       "JPEG",
+//       0,
+//       0,
+//       595.28,
+//       592.28 / canvas.width * canvas.height
+//     );
+//     pdf.save(filename + ".pdf");
+//   });
+// }
 
 
 /**

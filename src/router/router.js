@@ -31,6 +31,15 @@ export const constantRouterMap = [
       },
     },
     {
+      path: 'jijinhistory',
+      name: 'jijinhistory',
+      component: () => import ('../views/configManagement/jijinhistory/index'),
+      meta: {
+        name: '基金业绩',
+        selected_id:"M-6"
+      },
+    },
+    {
       path: 'zixuan',
       name: 'zixuan',
       component: () => import ('../views/configManagement/zixuan/index'),

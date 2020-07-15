@@ -32,6 +32,7 @@ export default {
           // {id:"M-2",name:"日志管理",path:"/configManagement/audit",icon:"xiwei",children:[]},
           {id:"M-4",name:"基金动态",path:"/configManagement/jijin",icon:"xiwei",children:[]},
           {id:"M-5",name:"自选管理",path:"/configManagement/zixuan",icon:"xiwei",children:[]},
+          {id:"M-6",name:"基金业绩",path:"/configManagement/jijinhistory",icon:"xiwei",children:[]},
           // {id:"M-8",name:"测试例子",path:"/configManagement/showTest",icon:"xiwei",children:[]},
           // {id:"M-3",name:"防御能力",path:"",icon:"fangyunengli",isOpen:true,children:[
           //   {id:"M-3-1",name:"防御ZD",path:"/configManagement/denfencePosition",icon:"",children:[]},
