@@ -21,6 +21,8 @@
           <el-table-column v-for="(col, index) in param.table.columns" :key="index" v-if="col.show" :prop="col.col" :label="col.name" :sortable="col.sort" :min-width="col.width" align="center">
             <template slot-scope="scope">
               <div v-if="col.col=='idxu'">{{ scope.$index + 1 }}</div>
+              <div v-else-if="col.col=='name'"><a target='_blank' :href="'http://fund.eastmoney.com/'+scope.row['code']+'.html'">{{ scope.row[col.col] }}</a></div>
+              <div v-else-if="col.col=='code'"><a target='_blank' :href="'http://fund.eastmoney.com/'+scope.row['code']+'.html'">{{ scope.row[col.col] }}</a></div>
               <div v-else-if="col.col=='opt'" class="opt">
                 <el-button round size="mini" :title="'加自选'" icon="el-icon-circle-plus-outline"  @click="addzixuan(scope.row)"></el-button>
               </div>
