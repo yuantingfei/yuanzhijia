@@ -39,6 +39,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         drop_debugger: true,
         drop_console: true
       },
+      //sourceMap: false是禁用除错功能。如果设为true，在部署包中会生成.map结尾的js文件。
+      // 它用于在代码混淆压缩的情况下仍可进行调试。这个功能虽好，但会大大增加整体资源包的体积，所以将其禁用。设置为ture的时候83M 设置为false为28M
       sourceMap: false
     }),
     // extract css into its own file

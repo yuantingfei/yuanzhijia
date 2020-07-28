@@ -8,6 +8,7 @@ var chalk = require('chalk')
 var webpack = require('webpack');
 var config = require('../config');
 var webpackConfig = require('./webpack.prod.conf');
+var child_process = require('child_process');
 console.log("staty..................................")
 var spinner = ora('building for ' + process.env.NODE_ENV + '...')
 spinner.start()
@@ -24,6 +25,12 @@ rm(path.join(process.env.NODE_ENV === 'productionen'?config.builden.assetsRoot:c
       chunks: false,
       chunkModules: false
     }) + '\n\n')
+    child_process.exec('git show >> ./dist/info.txt',function (error, stdout, stderr) {
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+      console.log(chalk.cyan('write info.txt ok!\n'))
+    });
     console.log(chalk.cyan('Build complete.\n'))
 
     if (process.env.npm_config_preview) {
