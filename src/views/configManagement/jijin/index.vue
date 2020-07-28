@@ -23,6 +23,8 @@
               <div v-if="col.col=='idxu'">{{ scope.$index + 1 }}</div>
               <div v-else-if="col.col=='name'"><a target='_blank' :href="'http://fund.eastmoney.com/'+scope.row['code']+'.html'">{{ scope.row[col.col] }}</a></div>
               <div v-else-if="col.col=='code'"><a target='_blank' :href="'http://fund.eastmoney.com/'+scope.row['code']+'.html'">{{ scope.row[col.col] }}</a></div>
+              <div v-else-if="col.col=='value'&&scope.row['isred']" class="valuered" >{{ scope.row[col.col] }}</div>
+              <div v-else-if="col.col=='value'&&!scope.row['isred']" class="valuegreen" >{{ scope.row[col.col] }}</div>
               <div v-else-if="col.col=='opt'" class="opt">
                 <el-button round size="mini" :title="'上移'" icon="el-icon-upload2"  @click="up(scope.row)"></el-button>
                 <el-button round size="mini" :title="'下移'" icon="el-icon-download"  @click="down(scope.row)"></el-button>
@@ -108,6 +110,13 @@ export default {
         .getList(params)
         .then(res => {
           this.tableData = res.data.list;
+          this.tableData.forEach(item=>{
+            if(parseFloat(item.value)>=0){
+              item.isred = true;
+            }else{
+              item.isred = false;
+            }
+          })
           this.pagination.total = res.data.total;
         })
         .catch(e => {
@@ -146,5 +155,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.valuered{
+  background-color:rgba(red, $alpha: 0.5);
+  color:red;
+}
+.valuegreen{
+  background-color:rgba(green, $alpha: 0.5);
+  color:green;
+}
 </style>
