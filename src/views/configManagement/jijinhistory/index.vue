@@ -158,12 +158,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.valuered{
-  background-color:rgba(red, $alpha: 0.5);
-  color:red;
-}
-.valuegreen{
-  background-color:rgba(green, $alpha: 0.5);
-  color:green;
-}
+@import "src/styles/jijin.scss";
 </style>

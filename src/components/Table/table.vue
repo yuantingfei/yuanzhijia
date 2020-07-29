@@ -146,9 +146,13 @@ export default {
       width: 100% !important;
     }
     .cell {
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 0px;
+      padding-right: 0px;
       text-align: left;
+      line-height: 30px;
+    }
+    td{
+      border-bottom: 0px;
     }
     .el-table__body-wrapper {
       overflow-x: hidden;
