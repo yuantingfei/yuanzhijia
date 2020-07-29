@@ -11,7 +11,9 @@
     </div> -->
     <div class="box_table">
       <div class="table_top_btn_greoup">
+        <el-checkbox v-model="isOrder">排序</el-checkbox>
         <el-button class="default-btn" @click="create()">新增自选</el-button>
+        
         <!-- <div class="group">
           <setcol style="float:right" :title="table.columns"></setcol>
         </div> -->
@@ -106,10 +108,16 @@ export default {
       },
       tableData: [],
       selections: [],
-      listLoading: false
+      listLoading: false,
+      isOrder:false
     };
   },
   computed: {},
+  watch:{
+    isOrder(){
+      this.getList();
+    }
+  },
   created() {
     setInterval(() => {
       this.getTableData();
@@ -176,12 +184,18 @@ export default {
           }
           this.tableData = list;
           this.tableData.forEach(item=>{
+            item.valueFloat  = parseFloat(item.value);
             if(parseFloat(item.value)>=0){
               item.isred = true;
             }else{
               item.isred = false;
             }
           })
+          if(this.isOrder){
+            this.tableData = _.sortBy(this.tableData, function(item) {
+              return -item.valueFloat;
+            })
+          }
           this.pagination.total = list.length;
         })
         .catch(e => {

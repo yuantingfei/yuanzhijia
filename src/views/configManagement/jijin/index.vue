@@ -10,11 +10,12 @@
       <el-button type="white-btn" @click="onReset()">清空</el-button>
     </div> -->
     <div class="box_table">
-      <!-- <div class="table_top_btn_greoup">
+      <div class="table_top_btn_greoup">
         <div class="group">
+          <el-checkbox v-model="isOrder">排序</el-checkbox>
           <setcol style="float:right" :title="table.columns"></setcol>
         </div>
-      </div> -->
+      </div>
        <div class="table_comtent">
        <table-data :config="param" :listLoading="listLoading" :tableData="tableData"  @selection-change="handleSelectionChange" @refresh-table="getTableData" :hideIndex="true" type="index">
           <el-table-column type="selection" width="40"></el-table-column>
@@ -26,8 +27,8 @@
               <div v-else-if="col.col=='value'&&scope.row['isred']" class="valuered" >{{ scope.row[col.col] }}</div>
               <div v-else-if="col.col=='value'&&!scope.row['isred']" class="valuegreen" >{{ scope.row[col.col] }}</div>
               <div v-else-if="col.col=='opt'" class="opt">
-                <el-button round size="mini" :title="'上移'" icon="el-icon-upload2"  @click="up(scope.row)"></el-button>
-                <el-button round size="mini" :title="'下移'" icon="el-icon-download"  @click="down(scope.row)"></el-button>
+                <el-button round size="mini" v-if="!isOrder" :title="'上移'" icon="el-icon-upload2"  @click="up(scope.row)"></el-button>
+                <el-button round size="mini" v-if="!isOrder" :title="'下移'" icon="el-icon-download"  @click="down(scope.row)"></el-button>
                 <el-button round size="mini" :title="'加自选'" icon="el-icon-circle-plus-outline"  @click="addzixuan(scope.row)"></el-button>
               </div>
                <div v-else class="overdata" :title="scope.row[col.col]">{{ scope.row[col.col] }}</div> 
@@ -88,8 +89,14 @@ export default {
       },
       tableData: [],
       selections: [],
-      listLoading: false
+      listLoading: false,
+      isOrder:false
     };
+  },
+  watch:{
+    isOrder(){
+      this.getList();
+    }
   },
   computed: {},
   created() {
@@ -111,12 +118,18 @@ export default {
         .then(res => {
           this.tableData = res.data.list;
           this.tableData.forEach(item=>{
+            item.valueFloat  = parseFloat(item.value);
             if(parseFloat(item.value)>=0){
               item.isred = true;
             }else{
               item.isred = false;
             }
           })
+          if(this.isOrder){
+            this.tableData = _.sortBy(this.tableData, function(item) {
+              return -item.valueFloat;
+            })
+          }
           this.pagination.total = res.data.total;
         })
         .catch(e => {
@@ -124,8 +137,12 @@ export default {
         });
     },
     getList(query) {
-      this.listQuery.key = query.key;
-      this.getTableData();
+      if(query==undefined){
+        this.getTableData();
+      }else{
+        this.listQuery.key = query.key;
+        this.getTableData();
+      }
     },
     up(row){
       jijinApi.upList({id:row.id})

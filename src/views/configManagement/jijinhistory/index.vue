@@ -10,11 +10,13 @@
       <el-button type="white-btn" @click="onReset()">清空</el-button>
     </div> -->
     <div class="box_table">
-      <!-- <div class="table_top_btn_greoup">
+      <div class="table_top_btn_greoup">
         <div class="group">
+          <el-checkbox v-model="isOrder">排序</el-checkbox>
           <setcol style="float:right" :title="table.columns"></setcol>
         </div>
-      </div> -->
+      </div>
+       
        <div class="table_comtent">
        <table-data :config="param" :listLoading="listLoading" :tableData="tableData"  @selection-change="handleSelectionChange" @refresh-table="getTableData" :hideIndex="true" type="index">
           <el-table-column type="selection" width="40"></el-table-column>
@@ -90,8 +92,14 @@ export default {
       },
       tableData: [],
       selections: [],
-      listLoading: false
+      listLoading: false,
+      isOrder:false
     };
+  },
+  watch:{
+    isOrder(){
+      this.getList();
+    }
   },
   computed: {},
   created() {
@@ -106,7 +114,6 @@ export default {
       this.getList();
     },
     getTableData() {
-      console.log(this.listQuery)
       let params = Object.assign({},this.listQuery, this.getParams());
       
       jijinApi
@@ -114,12 +121,18 @@ export default {
         .then(res => {
           this.tableData = res.data.list;
           this.tableData.forEach(item=>{
+            item.valueFloat  = parseFloat(item.value);
             if(parseFloat(item.value)>=0){
               item.isred = true;
             }else{
               item.isred = false;
             }
           })
+          if(this.isOrder){
+            this.tableData = _.sortBy(this.tableData, function(item) {
+              return -item.valueFloat;
+            })
+          }
           this.pagination.total = res.data.total;
         })
         .catch(e => {
@@ -127,8 +140,12 @@ export default {
         });
     },
     getList(query) {
-      this.listQuery.key = query.key;
-      this.getTableData();
+      if(query==undefined){
+        this.getTableData();
+      }else{
+        this.listQuery.key = query.key;
+        this.getTableData();
+      }
     },
     up(row){
       jijinApi.upList({id:row.id})
