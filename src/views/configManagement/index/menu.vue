@@ -123,7 +123,7 @@ $menu_height:35px;
   .menu_box{
     width: 125px;
     padding: 15px 0px;
-    border-bottom: 1px solid #3a445e;
+    border-bottom: 1px solid #101010;
     .menu_item_parent{
       height: $menu_height;
       line-height: $menu_height;

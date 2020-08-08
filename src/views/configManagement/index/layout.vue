@@ -3,7 +3,8 @@
     <div class="top">
       <!-- <img class="logo" src="/static/configManagement/配置管理子系统.png"/>  -->
       <div class="box">
-        <span class="time">欢迎您！管理员</span>
+        <!-- <span class="time">欢迎您！管理员</span> -->
+        <span class="time">欢迎您回来，现在时间：{{time}}</span>
         <!-- <el-button class="blue-btn" @click="exit()" size="mini">退出</el-button> -->
       </div>
     </div>
@@ -96,7 +97,7 @@ body{
   .top{
     width: 100%;
     height: 55px;
-    background-color:#121f3f;
+    background-color:#3859a9;
     background-image: url('/static/configManagement/topbg.png');
     align-items: center;
     .logo{
@@ -112,7 +113,7 @@ body{
     .box{
       float: right;
       // width: 380px;
-      width: 263px;
+      width: 277px;
       height: 55px;
       display: flex;
       align-items: center;
@@ -139,7 +140,7 @@ body{
       float: left;
       display: flex;
       justify-content: center;
-      background-color:#0f1b3a;
+      background-color:#1a0e31bf;
       background-image: url('/static/configManagement/leftimg.png');
       background-repeat: no-repeat;
       background-position: bottom;

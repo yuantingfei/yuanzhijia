@@ -228,4 +228,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/styles/jijin.scss";
+.table_top_btn_greoup{
+  padding-top: 10px !important;
+}
 </style>
