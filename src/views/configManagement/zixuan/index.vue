@@ -89,6 +89,7 @@ export default {
             show: true
           },
           { col: "dqjz", name: "当前净值", width: "10%", sort: false, show: true },
+          { col: "zixuan_value", name: "加自选时净值", width: "10%", sort: false, show: true },
           { col: "value", name: "当前涨幅(比上个交易日)", width: "10%", sort: false, show: true },
           { col: "ztjz", name: "昨天净值", width: "10%", sort: false, show: true },
           { col: "ztzf", name: "昨天涨幅(比上个交易日)", width: "10%", sort: false, show: true },
@@ -131,7 +132,11 @@ export default {
     submit(){
       this.$refs.form.validate(valid => {
         if (valid) {
-          localStorage.setItem('zixuan',localStorage.getItem('zixuan')+","+this.form.code);
+          if(localStorage.getItem('zixuan')!=""){
+            localStorage.setItem('zixuan',localStorage.getItem('zixuan')+","+this.form.code);
+          }else{
+            localStorage.setItem('zixuan',this.form.code);
+          }
           this.getTableData();
           this.dialogFormVisible = false;
           jijinApi.addCode({code:this.form.code})
@@ -142,7 +147,7 @@ export default {
       let zixuan = localStorage.getItem('zixuan').split(",");
       for (let y = 0; y < zixuan.length; y++) {
         const elementy = zixuan[y];
-        if (row.code == elementy) {
+        if (row.code == elementy.split('-')[0]) {
           zixuan.splice(y,1);
         }
       }
@@ -161,21 +166,29 @@ export default {
           let zixuan = localStorage.getItem('zixuan').split(",");
           let list = []
           for (let y = 0; y < zixuan.length; y++) {
-            const elementy = zixuan[y];
+            const elementy = zixuan[y].split('-')[0];
             let isHave = false;
             for (let i = 0; i < res.data.list.length; i++) {
               const elementi = res.data.list[i];
               if (elementy==elementi.code) {
-                list.push(elementi)
+                let tmp = {}
+                if(zixuan[y].split('-').length==2){
+                  Object.assign(tmp,elementi,{zixuan_value:zixuan[y].split('-')[1]})
+                }else{
+                  Object.assign(tmp,elementi,{zixuan_value:'--'})
+                  localStorage.setItem('zixuan',localStorage.getItem('zixuan').replace(elementy,elementy+'-'+elementi.dqjz));
+                }
+                list.push(tmp)
                 isHave = true;
               }
             }
-            if(!isHave){
+            if(!isHave&&zixuan.length!=1){
               list.push({
                 name:"数据更新中...",
                 code:elementy,
                 dqjz:"数据更新中...",
                 value:"数据更新中...",
+                zixuan_value:"数据更新中...",
                 ztjz:"数据更新中...",
                 ztzf:"数据更新中...",
                 timeStr:"数据更新中...",

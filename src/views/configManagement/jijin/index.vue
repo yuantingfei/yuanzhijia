@@ -154,7 +154,7 @@ export default {
     },
     addzixuan(row){
       if(localStorage.getItem('zixuan').indexOf(row.code)==-1){
-        localStorage.setItem('zixuan',localStorage.getItem('zixuan')+","+row.code);
+        localStorage.setItem('zixuan',localStorage.getItem('zixuan')+","+row.code+"-"+row.dqjz);
         this.$message({
           message: '添加自选成功',
           type: 'success'
