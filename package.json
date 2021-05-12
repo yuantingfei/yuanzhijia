@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "axios": "0.15.3",
-    "codemirror": "5.25.2",
+    "codemirror": "5.58.2",
     "codemirror-spell-checker": "^1.1.2",
     "dropzone": "4.3.0",
     "echarts": "4.1.0",
